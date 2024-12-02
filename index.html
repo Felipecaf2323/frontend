@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Login</title>
+</head>
+<body>
+    
+    <header>
+        <h2>Arrecadação Abrigo Bom Pastor</h2>
+        <ul>
+            <li>Sobre o Abrigo Bom Pastor</li>
+            <li>Sobre o Demolay</li>
+            <li>Realizar doação</li>
+        </ul>
+    </header>
+
+    <main>
+        <section class="sectionContainer" id="demolayAbrigo">
+            <h1><span class="demolay">Demolay</span> e <span class="abrigo">Abrigo Bom Pastor</span></h1>
+            <h2>Nos ajude nesta causa!!</h2>
+            <p id="chamada"><strong>Faça parte</strong> da arrecadação de alimentos para o Abrigo Bom Pastor.<br>Entre em contato conosco para saber como ajudar, ou acesse sua conta para acompanhar suas doações e os impactos positivos que elas estão tendo (:</p>
+        </section>
+
+        <section class="sectionContainer" id="login">
+            <form method="get">
+                <h2>Acesse sua conta</h2>
+                <label for="email">Informe seu e-mail:</label>
+                <input class="inputLogin" type="email" name="email" id="email" placeholder="E-mail" required>
+        
+                <label for="senha">Informe sua senha:</label>
+                <input class="inputLogin" type="password" name="senha" id="senha" placeholder="Senha" required>
+        
+                <input id="submitLogin" type="submit" value="Entrar" formaction="home.html">
+                
+                <input id="submitForget" type="submit" value="Recuperar senha" formaction="home.html">
+            </form>
+        </section>
+        
+
+        <section class="sectionContainer" id="cadastro">
+            <form>     
+                    <h2>Faça seu cadastro</h2>
+
+                    <label for="nome">Qual seu nome:</label>
+                    <input class="inputCadastro" type="text" name="nome" id="nome" placeholder="Nome" required>
+
+                    <label for="email">Escolha seu e-mail:</label>
+                    <input class="inputCadastro" type="email" name="email" id="email" placeholder="E-mail" required>
+
+                    <label for="senha">Escolha sua senha:</label>
+                    <input class="inputCadastro" type="password" name="senha" id="senha" placeholder="Senha" required>
+
+                    <label for="senha">Confirme a senha:</label>
+                    <input class="inputCadastro" type="password" name="senha" id="senha" placeholder="Confirmar senha" required>
+
+                    <label for="tipoContribuicao">Como você deseja contribuir?</label>
+                    <select class="inputCadastro" name="tipoContribuicao" id="tipoContribuicao" required>
+                        <option value="" selected disabled>Selecione uma opção</option>
+                        <option value="doacaoAlimentos">Doação de Alimentos</option>
+                        <option value="doacaoFinanceira">Doação Financeira</option>
+                        <option value="voluntariado">Voluntariado</option>
+                    </select>
+
+                    <input class="inputCadastro" type="submit" id="submitCreate" value="Cadastrar" formaction="home.html">
+            </form>
+        </section>
+    </main>
+
+    <hr>
+
+    <footer>
+        <h5>Arrecadação para o Abrigo Bom Pastor X Demolay</h5>
+        <p>Desenvolvido por <a href="https://www.linkedin.com/in/antonio-fontes-15a1482b6/">Antonio Darienço</a> e <a href="https://www.linkedin.com/in/felipeps-devops/"> Felipe Seugling</a></p>
+    </footer>
+
+</body>
+</html>
