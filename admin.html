@@ -3,111 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/home.css">
     <title>Admin - Cadastro de Usuários</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
         .container {
             max-width: 500px;
-            margin: auto;
+            margin: 40px auto;
             background: white;
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
         }
         input, button {
             width: 100%;
             margin-top: 10px;
             padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #1c182b;
         }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            background: #ddd;
-            margin: 5px 0;
-            padding: 10px;
+        ul#listaUsuarios{
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+        }
+        ul#listaUsuarios li button {
+            background: #ff4d4d;
+            width: 80%;
+            color: white;
+            font-size: large;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #0056b3;
+        color: white;
+        text-align: center;
+        padding: 10px;
         }
     </style>
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Logo Abrigo Bom Pastor">
+            <h1>Abrigo Bom Pastor</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html#sobre">Sobre Nós</a></li>
+                <li><a href="home.html#projetos">Nossa Solução</a></li>
+                <li><a href="home.html#como-ajudar">Como Ajudar</a></li>
+                <li><a href="home.html#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
         <h2>Cadastro de Usuários</h2>
         <input type="text" id="nome" placeholder="Nome do Usuário">
         <input type="email" id="email" placeholder="E-mail">
-        <button onclick="cadastrar()">Cadastrar</button>
-        <button onclick="limparCampos()">Limpar Campos</button>
+        <button class="btn" onclick="cadastrar()">Cadastrar</button>
+        <button class="btn" onclick="limparCampos()">Limpar Campos</button>
         <input type="text" id="pesquisa" placeholder="Pesquisar..." onkeyup="pesquisar()">
         <ul id="listaUsuarios"></ul>
-        <button onclick="excluirTodos()">Excluir Todos</button>
+        <button class="btnExclusao" onclick="excluirTodos()">Excluir Todos</button>
     </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", carregarUsuarios);
-
-        function cadastrar() {
-            let nome = document.getElementById("nome").value;
-            let email = document.getElementById("email").value;
-            if (!nome || !email) {
-                alert("Preencha todos os campos!");
-                return;
-            }
-            let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-            let data = new Date().toLocaleString();
-            usuarios.push({ nome, email, data });
-            localStorage.setItem("usuarios", JSON.stringify(usuarios));
-            carregarUsuarios();
-            limparCampos();
-        }
-
-        function carregarUsuarios() {
-            let lista = document.getElementById("listaUsuarios");
-            lista.innerHTML = "";
-            let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-            usuarios.forEach((user, index) => {
-                let li = document.createElement("li");
-                li.innerHTML = `${user.data} - ${user.nome} (${user.email}) <button onclick="excluir(${index})">Excluir</button>`;
-                lista.appendChild(li);
-            });
-        }
-
-        function excluir(index) {
-            let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-            usuarios.splice(index, 1);
-            localStorage.setItem("usuarios", JSON.stringify(usuarios));
-            carregarUsuarios();
-        }
-
-        function excluirTodos() {
-            if (confirm("Tem certeza que deseja excluir todos?")) {
-                localStorage.removeItem("usuarios");
-                carregarUsuarios();
-            }
-        }
-
-        function limparCampos() {
-            document.getElementById("nome").value = "";
-            document.getElementById("email").value = "";
-        }
-
-        function pesquisar() {
-            let termo = document.getElementById("pesquisa").value.toLowerCase();
-            let lista = document.getElementById("listaUsuarios");
-            let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-            lista.innerHTML = "";
-            usuarios.filter(user => user.nome.toLowerCase().includes(termo) || user.email.toLowerCase().includes(termo))
-                .forEach((user, index) => {
-                    let li = document.createElement("li");
-                    li.innerHTML = `${user.data} - ${user.nome} (${user.email}) <button onclick="excluir(${index})">Excluir</button>`;
-                    lista.appendChild(li);
-                });
-        }
-    </script>
+    <footer>
+        <p>&copy; 2024 Abrigo Bom Pastor Desenvolvido por <a href="https://antoniofontess.github.io/CV/" target="_blank">Antonio Darienço</a> e <a href="https://felipecaf2323.github.io/Front-End/" target="_blank">Felipe Seugling</a></p>
+        <a href="#sobre" class="back-to-top">Voltar ao topo</a>
+    </footer>
+    <script src="script.js"></script>
 </body>
 </html>
